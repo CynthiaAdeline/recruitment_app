@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
 }
 
 model Admin {
@@ -15,32 +15,32 @@ model Admin {
 }
 
 model Job {
-  id             String        @id @default(uuid())
-  title          String
-  location       String
-  employmentType String
-  closingDate    DateTime
-  summary        String
-  description    String
+  id               String        @id @default(uuid())
+  title            String
+  location         String
+  employmentType   String
+  closingDate      DateTime
+  summary          String
+  description      String
   responsibilities String
-  requirements   String
-  status         String        @default("Open")
-  createdAt      DateTime      @default(now())
-  applications   Application[]
+  requirements     String
+  status           String        @default("Open")
+  createdAt        DateTime      @default(now())
+  applications     Application[]
 }
 
 model Application {
-  id          String   @id @default(uuid())
-  jobId       String
-  job         Job      @relation(fields: [jobId], references: [id])
-  fullName    String
-  email       String
-  phone       String
-  coverNote   String
-  cvPath      String
-  status      String   @default("Pending")
-  note        String?
-  createdAt   DateTime @default(now())
+  id        String   @id @default(uuid())
+  jobId     String
+  job       Job      @relation(fields: [jobId], references: [id])
+  fullName  String
+  email     String
+  phone     String
+  coverNote String
+  cvPath    String
+  status    String   @default("Pending")
+  note      String?
+  createdAt DateTime @default(now())
 
   @@unique([jobId, email])
 }
