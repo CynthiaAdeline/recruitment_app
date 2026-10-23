@@ -5,13 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node start.mjs",
     "lint": "eslint",
-    "db:migrate": "prisma migrate dev --name init",
-    "db:seed": "tsx prisma/seed.ts",
     "db:setup": "prisma migrate dev --name init && tsx prisma/seed.ts",
-    "render:build": "prisma generate && next build",
-    "render:start": "node start.mjs"
+    "render:build": "prisma generate && next build"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
