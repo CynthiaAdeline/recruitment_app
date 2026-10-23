@@ -9,7 +9,8 @@
     "lint": "eslint",
     "db:migrate": "prisma migrate dev --name init",
     "db:seed": "tsx prisma/seed.ts",
-    "db:setup": "prisma migrate dev --name init && tsx prisma/seed.ts"
+    "db:setup": "prisma migrate dev --name init && tsx prisma/seed.ts",
+    "render:build": "npm install && prisma generate && prisma migrate deploy && tsx prisma/seed.ts && next build"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
